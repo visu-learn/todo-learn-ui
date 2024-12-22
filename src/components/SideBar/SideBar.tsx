@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './SideBar.module.scss';
 import Link from 'next/link';
-import { Dashboard } from '@mui/icons-material';
+import { Add, Dashboard, PlusOne } from '@mui/icons-material';
 
 interface SideBarProps {}
 
@@ -11,13 +11,12 @@ const SideBar: FC<SideBarProps> = () => {
   return (
     <div
       id='sidebar'
-      className='rounded-lg px-8  h-[90%] mx-1 w-[300px] bg-gray-100 text-gray-700 hidden md:block'
+      className='rounded-lg shadow-lg px-8  min-h-[95%] mx-1 w-[300px] bg-gray-100 text-gray-700 hidden md:block'
     >
       <div className='px-4 py-6 text-lg font-bold border-b border-gray-600'>
         Menu
       </div>
 
-      {/* Tasks Section */}
       <div className='hover:bg-gray-300 cursor-pointer my-4 flex items-center py-2 border-b border-gray-400'>
         <Dashboard />
         <h3 className='px-2 text-sm font-semibold uppercase text-gray-400'>
@@ -25,7 +24,6 @@ const SideBar: FC<SideBarProps> = () => {
         </h3>
       </div>
 
-      {/* Tasks Section */}
       <div className='mt-4 pb-4 border-b border-gray-400'>
         <h3 className='px-4 text-sm font-semibold uppercase text-gray-400'>
           Tasks
@@ -45,12 +43,17 @@ const SideBar: FC<SideBarProps> = () => {
         </ul>
       </div>
 
-      {/* Subjects Section */}
       <div className='mt-6'>
         <h3 className='px-4 text-sm font-semibold uppercase text-gray-400'>
           Subjects
         </h3>
         <ul className='mt-2 ml-3 space-y-2'>
+          <Link href={'/subject/new'} className=''>
+            <li className='hover:bg-gray-300 rounded-lg px-4 py-2 cursor-pointer'>
+              <Add />
+              add subject
+            </li>
+          </Link>
           <li className='hover:bg-gray-300 px-4 py-2 cursor-pointer'>
             all subjects
           </li>

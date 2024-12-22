@@ -7,7 +7,7 @@ import profileTestImg from '../../assets/imgs/profile.png';
 interface NavBarProps {}
 
 const NavBar: FC<NavBarProps> = () => (
-  <nav className='w-full text-white text-gray-500 px-20 py-3 flex justify-between items-center'>
+  <nav className='w-full text-white shadow-sm text-gray-500 px-20 py-3 flex justify-between items-center'>
     <div className='text-lg font-bold'>Todo Learn</div>
     <button
       className='block md:hidden text-white'
