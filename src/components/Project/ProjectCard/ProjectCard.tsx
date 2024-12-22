@@ -5,7 +5,6 @@ import {
   CardHeader,
   Checkbox,
   Divider,
-  Input,
 } from '@nextui-org/react';
 
 interface Props {

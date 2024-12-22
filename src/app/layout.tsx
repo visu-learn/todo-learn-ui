@@ -3,7 +3,6 @@ import localFont from 'next/font/local';
 import './globals.css';
 import NavBar from '@/components/NavBar/NavBar';
 import SideBar from '@/components/SideBar/SideBar';
-import theme from '@/theme';
 import { NextUIProvider } from '@nextui-org/react';
 
 const geistSans = localFont({
