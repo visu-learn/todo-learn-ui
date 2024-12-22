@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 import styles from './SideBar.module.scss';
+import Link from 'next/link';
+import { Dashboard } from '@mui/icons-material';
 
 interface SideBarProps {}
 
@@ -16,8 +18,9 @@ const SideBar: FC<SideBarProps> = () => {
       </div>
 
       {/* Tasks Section */}
-      <div className='mt-4 pb-4 border-b border-gray-400'>
-        <h3 className='px-4 text-sm font-semibold uppercase text-gray-400'>
+      <div className='hover:bg-gray-300 cursor-pointer my-4 flex items-center py-2 border-b border-gray-400'>
+        <Dashboard />
+        <h3 className='px-2 text-sm font-semibold uppercase text-gray-400'>
           DashBoard
         </h3>
       </div>
@@ -28,7 +31,11 @@ const SideBar: FC<SideBarProps> = () => {
           Tasks
         </h3>
         <ul className='mt-2 ml-3 space-y-2'>
-          <li className='hover:bg-gray-300 px-4 py-2 cursor-pointer'>Today</li>
+          <Link href={'/today'}>
+            <li className='hover:bg-gray-300 px-4 py-2 cursor-pointer'>
+              Today
+            </li>
+          </Link>
           <li className='hover:bg-gray-300 rounded-lg px-4 py-2 cursor-pointer'>
             Upcoming Tasks
           </li>

@@ -4,6 +4,7 @@ import './globals.css';
 import NavBar from '@/components/NavBar/NavBar';
 import SideBar from '@/components/SideBar/SideBar';
 import theme from '@/theme';
+import { NextUIProvider } from '@nextui-org/react';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -31,16 +32,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar />
-        <div className='flex justify-between my-5'>
-          <SideBar />
-          <div
-            style={{ maxHeight: '90vh', overflowY: 'auto' }}
-            className='w-[80%] max-h-[100px]'
-          >
-            {children}
+        <NextUIProvider>
+          <NavBar />
+          <div className='flex justify-between my-5'>
+            <SideBar />
+            <div
+              style={{ maxHeight: '90vh', overflowY: 'auto' }}
+              className='w-[80%] max-h-[100px]'
+            >
+              {children}
+            </div>
           </div>
-        </div>
+        </NextUIProvider>
       </body>
     </html>
   );
