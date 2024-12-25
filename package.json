@@ -16,6 +16,7 @@
     "@mui/material": "^6.2.1",
     "@mui/x-charts": "^7.23.2",
     "@nextui-org/react": "^2.6.8",
+    "axios": "^1.7.9",
     "framer-motion": "^11.15.0",
     "generate-react-cli": "^8.4.9",
     "next": "14.2.21",
