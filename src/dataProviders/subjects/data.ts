@@ -1,5 +1,5 @@
 import { API_BASE_URL } from '@/const';
-import { Subject } from '@/Interfaces/subjects';
+import { Subject, SubjectStatus } from '@/Interfaces/subjects';
 import axios from 'axios';
 
 const API_SUBJECT_BASE_URL = API_BASE_URL + '/subjects';
@@ -24,4 +24,16 @@ export const fecthSubjectById = async (id: number): Promise<Subject | null> => {
     `${API_SUBJECT_BASE_URL}/${id}`
   );
   return subject.data;
+};
+
+export const generateEmptySubject = (): Subject => {
+  return {
+    id: -1,
+    name: '',
+    description: '',
+    status: SubjectStatus.TODO,
+    projects: [],
+    quizzes: [],
+    topics: [],
+  };
 };

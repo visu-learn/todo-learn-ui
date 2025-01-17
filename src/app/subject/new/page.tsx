@@ -1,4 +1,6 @@
 'use client';
+import { useCreateSubject } from '@/hooks/subjects/hooks';
+import { Subject } from '@/Interfaces/subjects';
 import {
   Select,
   SelectItem,
@@ -8,8 +10,27 @@ import {
   Button,
   Spinner,
 } from '@nextui-org/react';
+import { useCallback } from 'react';
 
-export default function newsubject() {
+const NewSubject: React.FC = () => {
+  const { subject, isCreating, onCreateSubject, onSubjectChange } =
+    useCreateSubject();
+
+  const handleFieldChange = useCallback(
+    (field: keyof Omit<Subject, 'id' | 'topics' | 'projects' | 'quizzes'>) =>
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (e: any) => {
+        const value = e?.target?.value ?? null;
+        onSubjectChange(field, value);
+      },
+    [onSubjectChange]
+  );
+
+  const onCreate = useCallback(() => {
+    // check if all data are valid
+    onCreateSubject();
+  }, [onCreateSubject]);
+
   return (
     <>
       <div className='flex'>
@@ -21,6 +42,8 @@ export default function newsubject() {
                 <div className='flex col my-2 gap-2 w-full'>
                   <Input
                     label='Subject Name'
+                    value={subject.name}
+                    onChange={handleFieldChange('name')}
                     placeholder='enter subject name...'
                   />
 
@@ -33,19 +56,28 @@ export default function newsubject() {
                 <div className='my-2 w-full'>
                   <Textarea
                     label='Description'
-                    value={'ceci est un text non editable'}
+                    value={subject.description}
+                    onChange={handleFieldChange('description')}
                     placeholder='enter text here'
                   />
                 </div>
 
                 <div className='flex col my-2 gap-2 w-full'>
                   <DatePicker label='Start Date' />
-                  <DatePicker label='Deadline (Optional)' />
+                  <DatePicker
+                    label='Deadline (Optional)'
+                    onChange={handleFieldChange('deadline')}
+                  />
                 </div>
-                <Button className='my-3 text-bold w-[60%]' color='success'>
+                <Button
+                  isLoading={isCreating}
+                  className='my-3 text-bold w-[60%]'
+                  color='success'
+                  onPress={onCreate}
+                >
                   Get A Draft TodoLearn
                 </Button>
-                <Spinner />
+                {isCreating && <Spinner />}
                 <p>sending data to model ...</p>
                 <p>Getting suggestions for Topics...</p>
                 <p>Redirecting to Subject UI, Please wait ...</p>
@@ -56,4 +88,6 @@ export default function newsubject() {
       </div>
     </>
   );
-}
+};
+
+export default NewSubject;

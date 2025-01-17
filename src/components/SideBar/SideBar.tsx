@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import styles from './SideBar.module.scss';
 import Link from 'next/link';
-import { Add, Dashboard, PlusOne } from '@mui/icons-material';
+import { Add, Dashboard } from '@mui/icons-material';
 
 interface SideBarProps {}
 
@@ -52,6 +51,12 @@ const SideBar: FC<SideBarProps> = () => {
             <li className='hover:bg-gray-300 rounded-lg px-4 py-2 cursor-pointer'>
               <Add />
               add subject
+            </li>
+          </Link>
+          <Link href={'/subject/categories'} className=''>
+            <li className='hover:bg-gray-300 rounded-lg px-4 py-2 cursor-pointer'>
+              <Add />
+              subject categories
             </li>
           </Link>
           <li className='hover:bg-gray-300 px-4 py-2 cursor-pointer'>

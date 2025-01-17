@@ -18,6 +18,7 @@ export interface Subject {
 export interface SubjectCategory {
   id: number;
   name: string;
+  description: string;
 }
 
 export enum SubjectStatus {
